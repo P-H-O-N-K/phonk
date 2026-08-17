@@ -19,14 +19,33 @@ struct LexerOptions {
     bool includeTrivia = false;
 };
 
+/**
+ * Converts P.H.O.N.K. code into tokens.
+ */
 class Lexer {
 public:
+    /**
+    * Initializes a new lexer.
+    * @param source The source file containing the P.H.O.N.K. code.
+    * @param diagnosticEngine The diagnostic engine to use (default: nullptr).
+    * @param options Extraneous options for lexer (default: {}).
+    */
     explicit Lexer(const source::SourceFile& source,
                    diagnostics::DiagnosticEngine* diagnosticEngine = nullptr,
                    LexerOptions options = {});
-
+    
+    /**
+     * Tokenizes the next character and returns the token.
+     * 
+     * @return The next token
+     */
     Token nextToken();
-
+    
+    /**
+     * Tokenizes the input provided by the SourceFile.
+     *
+     * @return A vector of Token objects parsed from the source input.
+     */
     std::vector<Token> tokenize();
 
 private:
