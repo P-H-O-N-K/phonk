@@ -20,10 +20,11 @@ struct LexerOptions {
 };
 
 /**
- * Converts P.H.O.N.K. code into tokens.
+ * Converts Phonk code into tokens.
  */
 class Lexer {
 public:
+    
     /**
     * Initializes a new lexer.
     * @param source The source file containing the P.H.O.N.K. code.
