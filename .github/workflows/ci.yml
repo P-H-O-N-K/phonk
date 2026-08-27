@@ -35,3 +35,22 @@ jobs:
 
       - name: Run tests
         run: ctest --test-dir build --output-on-failure --build-config Release
+  
+  docker:
+    name: Docker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Build development image
+        run: docker compose build
+
+      - name: Build and test Phonk
+        run: |
+          docker compose run --rm dev bash -c "
+            cmake -S . -B build-docker -G Ninja &&
+            cmake --build build-docker &&
+            ctest --test-dir build-docker --output-on-failure
+          "
