@@ -38,9 +38,13 @@ Phonk is a programming language and compiler written in C++20.
 
 ### Requirements
 
-* C++20 compiler
-* CMake
-* Git
+For a native build:
+
+- C++20 compiler
+- CMake
+- Git
+
+Alternatively, you can use the provided Docker development environment. This requires Docker with Docker Compose support.
 
 ### Installation
 
@@ -49,17 +53,52 @@ git clone https://github.com/phonk-lang/phonk.git
 cd phonk
 ```
 
-### Build
+### Native Build
 
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --config Release
 ```
 
+### Docker Development Environment
+
+Phonk includes a Docker development environment with the required Linux build tools.
+
+Build the development image:
+
+```bash
+docker compose build
+```
+
+Start a temporary development container:
+
+```bash
+docker compose run --rm dev bash
+```
+
+The repository is mounted at `/workspace`. Changes made on the host are available inside the container immediately.
+
+Build Phonk inside the container:
+
+```bash
+cmake -S . -B build-docker -G Ninja
+cmake --build build-docker
+```
+
+The Docker build output is stored in a named volume and does not need to be stored in the local repository.
+
 ## Testing
+
+For a native build:
 
 ```bash
 ctest --test-dir build --output-on-failure --build-config Release
+```
+
+Inside the Docker development environment:
+
+```bash
+ctest --test-dir build-docker --output-on-failure
 ```
 
 ## Documentation

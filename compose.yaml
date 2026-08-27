@@ -1,0 +1,11 @@
+services:
+  dev:
+    image: phonk-dev
+    build:
+      context: .
+    volumes:
+      - .:/workspace
+      - phonk-build:/workspace/build-docker
+      
+volumes:
+  phonk-build:
