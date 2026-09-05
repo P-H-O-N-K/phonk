@@ -4,6 +4,8 @@ add_library(phonkc STATIC
         src/diagnostics/diagnostic_engine.cpp
         src/lexer/lexer.cpp
         src/compiler.cpp
+        include/phonk/ast/expression.hpp
+        include/phonk/ast/statement.hpp
 )
 
 target_include_directories(phonkc PUBLIC include)
