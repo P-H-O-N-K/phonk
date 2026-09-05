@@ -5,6 +5,8 @@ project(phonk
         LANGUAGES CXX
 )
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 option(PHONK_ENABLE_WARNINGS "Enable compiler warnings" ON)
 
 set(CMAKE_CXX_STANDARD 20)
