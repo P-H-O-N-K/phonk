@@ -6,6 +6,8 @@ add_library(phonkc STATIC
         src/compiler.cpp
         include/phonk/ast/expression.hpp
         include/phonk/ast/statement.hpp
+        include/phonk/parser/parser.hpp
+        src/parser/parser.cpp
 )
 
 target_include_directories(phonkc PUBLIC include)
